@@ -15,6 +15,8 @@ class CreateAttributeIncrementValuesTable extends Migration
     {
         Schema::create('attribute_increment_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->increments('value'); // Todo: Refactor this so it only forces unique values per associated attribute.
+            $table->integer('attribute_id')->unsigned();
             $table->timestamps();
         });
     }

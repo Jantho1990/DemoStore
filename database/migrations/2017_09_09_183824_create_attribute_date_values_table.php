@@ -15,6 +15,8 @@ class CreateAttributeDateValuesTable extends Migration
     {
         Schema::create('attribute_date_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('value');
+            $table->integer('attribute_id')->unsigned();
             $table->timestamps();
         });
     }

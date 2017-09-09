@@ -15,6 +15,8 @@ class CreateAttributesAttributeBooleanValuesTable extends Migration
     {
         Schema::create('attributes_attribute_boolean_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('attribute_id')->unsigned();
+            $table->integer('attribute_boolean_id')->unsigned();
             $table->timestamps();
         });
     }

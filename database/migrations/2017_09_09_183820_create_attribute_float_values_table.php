@@ -15,6 +15,8 @@ class CreateAttributeFloatValuesTable extends Migration
     {
         Schema::create('attribute_float_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->float('value', 8, 2);
+            $table->integer('attribute_id')->unsigned();
             $table->timestamps();
         });
     }

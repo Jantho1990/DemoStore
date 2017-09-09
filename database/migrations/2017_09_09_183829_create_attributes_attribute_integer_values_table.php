@@ -15,6 +15,8 @@ class CreateAttributesAttributeIntegerValuesTable extends Migration
     {
         Schema::create('attributes_attribute_integer_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('attribute_id')->unsigned();
+            $table->integer('attribute_integer_id')->unsigned();
             $table->timestamps();
         });
     }

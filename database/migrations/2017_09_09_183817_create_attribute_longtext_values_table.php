@@ -15,6 +15,8 @@ class CreateAttributeLongtextValuesTable extends Migration
     {
         Schema::create('attribute_longtext_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->longtext('value');
+            $table->integer('attribute_id')->unsigned();
             $table->timestamps();
         });
     }

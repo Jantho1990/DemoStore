@@ -15,6 +15,8 @@ class CreateAttributeEnumValuesTable extends Migration
     {
         Schema::create('attribute_enum_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->json('value'); // We can't dynamically set enums, so we're going to fake it with JSON and some model logic.
+            $table->integer('attribute_id')->unsigned();
             $table->timestamps();
         });
     }

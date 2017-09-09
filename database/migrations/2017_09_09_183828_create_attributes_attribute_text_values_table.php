@@ -15,6 +15,8 @@ class CreateAttributesAttributeTextValuesTable extends Migration
     {
         Schema::create('attributes_attribute_text_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('attribute_id')->unsigned();
+            $table->integer('attribute_text_id')->unsigned();
             $table->timestamps();
         });
     }

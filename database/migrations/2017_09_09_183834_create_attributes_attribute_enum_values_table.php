@@ -15,6 +15,8 @@ class CreateAttributesAttributeEnumValuesTable extends Migration
     {
         Schema::create('attributes_attribute_enum_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('attribute_id')->unsigned();
+            $table->integer('attribute_enum_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -15,6 +15,8 @@ class CreateAttributesAttributeTimeValuesTable extends Migration
     {
         Schema::create('attributes_attribute_time_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('attribute_id')->unsigned();
+            $table->integer('attribute_time_id')->unsigned();
             $table->timestamps();
         });
     }

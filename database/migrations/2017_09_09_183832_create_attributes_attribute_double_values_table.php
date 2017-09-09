@@ -15,6 +15,8 @@ class CreateAttributesAttributeDoubleValuesTable extends Migration
     {
         Schema::create('attributes_attribute_double_values', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('attribute_id')->unsigned();
+            $table->integer('attribute_double_id')->unsigned();
             $table->timestamps();
         });
     }
