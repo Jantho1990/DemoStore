@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributesAttributeValuesTable extends Migration
+class CreateAttributesAttributeIntegerValuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateAttributesAttributeValuesTable extends Migration
      */
     public function up()
     {
-        Schema::table('attributes_attribute_values', function (Blueprint $table) {
-            //
+        Schema::create('attributes_attribute_integer_values', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class CreateAttributesAttributeValuesTable extends Migration
      */
     public function down()
     {
-        Schema::table('attributes_attribute_values', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('attributes_attribute_integer_values');
     }
 }
