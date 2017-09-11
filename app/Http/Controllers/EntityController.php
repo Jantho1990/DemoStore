@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity;
+use App\Factory\AttributeFactory as Attribute;
 use Illuminate\Http\Request;
 
 class EntityController extends Controller
@@ -35,7 +36,12 @@ class EntityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $entity = new Entity();
+        foreach($request['attributes'] as $newAttribute){
+            $entity->$newAttribute['name'] = new Attribute($newAttribute['value']);
+        }
+        $entity->save();
+        return 'Saved';
     }
 
     /**
