@@ -1,15 +1,24 @@
 <?php namespace App\Factory;
 
-use App\{Attribute, AttributeBooleanValue, AttributeDatetimeValue, AttributeDateValue, AttributeDoubleValue, AttributeEnumValue, AttributeFloatValue, AttributeIncrementValue, AttributeIntegerunsignedValue, AttributeIntegerValue, AttributeLongtextValue, AttributeStringValue, AttributeTextValue, AttributeTimeValue};
+use App\{Attribute, Entity, AttributeBooleanValue, AttributeDatetimeValue, AttributeDateValue, AttributeDoubleValue, AttributeEnumValue, AttributeFloatValue, AttributeIncrementValue, AttributeIntegerunsignedValue, AttributeIntegerValue, AttributeLongtextValue, AttributeStringValue, AttributeTextValue, AttributeTimeValue};
 
 class AttributeFactory
 {
 
-    public function __construct($name)
+    public static function create(Entity $entity, $name, $type, $value = null)
     {
-        if(class_exists($name . 'Value', $value = null)){
-            return new $name . 'Value'(['value': $value]);
-        }
+//        dd(['FACE', $entity->id]);
+        $attribute = Attribute::create([
+            'name' => $name,
+            'entity_id' => $entity->id
+        ]);
+        $className = 'App\Attribute' . $type . 'Value';
+//        dd($className);
+        $attributeValue = $className::create([
+            'value' => $value,
+            'attribute_id' => $attribute->id
+        ]);
+        return $attribute;
     }
 
 }

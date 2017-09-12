@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Entity;
-use App\Factory\AttributeFactory as Attribute;
+use App\Factory\AttributeFactory;
 use Illuminate\Http\Request;
 
 class EntityController extends Controller
@@ -36,12 +36,30 @@ class EntityController extends Controller
      */
     public function store(Request $request)
     {
+        // Test
         $entity = new Entity();
+//        dd($entity->id);
+        $entity->entityName = 'fake' . random_int(0, 999999) . random_int(0, 99999);
+//        $entity->attributes = json_encode([]);
+        $entity->save(); // gotta do this to get the id
+//        dd($entity);
+        $request['attributes'] = [
+            ['name' => 'is_active', 'type' => 'Boolean', 'value' => false],
+            ['name' => 'some_text', 'type' => 'String', 'value' => 'This is a string'],
+            ['name' => 'a_number', 'type' => 'Integer', 'value' => 197]
+        ];
+        $attributes = [];
         foreach($request['attributes'] as $newAttribute){
-            $entity->$newAttribute['name'] = new Attribute($newAttribute['value']);
+            $name = $newAttribute['name'];
+            $attributes[$name] = AttributeFactory::create($entity, $newAttribute['name'], $newAttribute['type'], $newAttribute['value']);
         }
-        $entity->save();
-        return 'Saved';
+//        $entity->attributes = json_encode($attributes);
+//        $entity->save();
+//        dd($entity->attributes);
+//        $dummy = $entity->attributes;
+//        dd('bah');
+        dd($entity->some_text);
+        return collect('Saved', $entity);
     }
 
     /**

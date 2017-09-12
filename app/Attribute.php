@@ -6,6 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attribute extends Model
 {
+
+    protected $fillable = [
+        'name',
+        'entity_id'
+    ];
+
+    /**
+     * Determine if
+     */
+
     public function entities()
     {
         return $this->belongsToMany('App\Entity');

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AttributeStringValue extends Model
+class AttributeStringValue extends AttributeValue
 {
     public function attributes()
     {

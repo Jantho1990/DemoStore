@@ -3,9 +3,57 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
 class Entity extends Model
 {
+    // Using this magic method to mimic the appearance of accessing
+    // model properties when we are really accessing an attribute
+    // model.
+    public function __get($name)
+    {
+//        dd($name);
+//        dd($this->attributes);
+//        dd(property_exists($this, $name)); // WHY IS THIS TRUE?!?
+        /*if(property_exists($this,$name)){
+//            dd([$name, $this->name]);
+        }
+        if($this->attributes()->get()->count() > 1) {
+//            dd($this->attributes()->get());
+        }
+        if(property_exists($this, $name) && $this->$name instanceof Collection){
+            dd('collect');
+        }*/
+        /*if($this->attributes()->get()->count() > 2){
+            echo "\n$name cakes";
+            dd($this->attributesHasName($name));
+            dd($this->attributes()->get()->has('some_text'));
+        }*/
+        // Todo: Fix all this junk
+        if(!!($key = $this->attributesHasName($name))){
+//            dd('cakce');
+            return $key->attributeValues;
+        }else{
+            echo $name;
+            return parent::__get($name);
+        }
+    }
+
+    //Todo: clean this up
+    /**
+     * Determine if attribute has name.
+     * @param $name
+     * @return bool
+     */
+    protected function attributesHasName($name){
+        $attributes = $this->attributes()->get();
+        return $attributes->reduce(function($carry,$attribute)use($name){
+            if($carry !== false){return $carry;}
+            if($attribute->name === $name){return $attribute;}
+            return false;
+        }, false);
+    }
+
     public function attributes()
     {
         return $this->hasMany('App\Attribute');
