@@ -32,7 +32,11 @@ class Entity extends Model
         // Todo: Fix all this junk
         if(!!($key = $this->attributesHasName($name))){
 //            dd('cakce');
-            return $key->attributeValues;
+            $type = $key->type;
+            $typeName = 'attribute'.ucfirst($type).'Values';
+//            dd($typeName);
+            echo $typeName . " $name";
+            return $key;
         }else{
             echo $name;
             return parent::__get($name);
@@ -49,7 +53,7 @@ class Entity extends Model
         $attributes = $this->attributes()->get();
         return $attributes->reduce(function($carry,$attribute)use($name){
             if($carry !== false){return $carry;}
-            if($attribute->name === $name){return $attribute;}
+            if($attribute->name === $name){$carry = $attribute; return $carry;}
             return false;
         }, false);
     }
