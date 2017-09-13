@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributesEntitiesTable extends Migration
+class CreateEntitiesThingiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAttributesEntitiesTable extends Migration
      */
     public function up()
     {
-        Schema::table('attributes_entities', function (Blueprint $table) {
+        Schema::table('entities_thingies', function (Blueprint $table) {
             //
         });
     }
@@ -25,7 +25,7 @@ class CreateAttributesEntitiesTable extends Migration
      */
     public function down()
     {
-        Schema::table('attributes_entities', function (Blueprint $table) {
+        Schema::table('entities_thingies', function (Blueprint $table) {
             //
         });
     }
