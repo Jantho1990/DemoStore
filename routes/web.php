@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/test', 'TestController@testEntityAttributeRelationship');
+
 Route::get('/', function () {
     return view('welcome');
 });

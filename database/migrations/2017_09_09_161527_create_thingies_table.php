@@ -17,23 +17,24 @@ class CreateThingiesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type', 16);
-            $table->integer('integer_value');
-            $table->unsignedInteger('unsigned_integer_value')->unsigned();
-            $table->string('string_value');
-            $table->text('text_value');
-            $table->longtext('long_text_value');
-            $table->boolean('boolean_value');
-            $table->date('date_value');
-            $table->time('time_value');
-            $table->dateTime('date_time_value');
-            $table->decimal('decimal_value');
-            $table->float('float_value');
-            $table->double('double_value');
-            $table->json('json_value');
+            $table->integer('entity_id')->unsigned();
+            $table->integer('integer_value')->nullable();
+            $table->unsignedInteger('unsigned_integer_value')->unsigned()->nullable();
+            $table->string('string_value')->nullable();
+            $table->text('text_value')->nullable();
+            $table->longtext('long_text_value')->nullable();
+            $table->boolean('boolean_value')->nullable();
+            $table->date('date_value')->nullable();
+            $table->time('time_value')->nullable();
+            $table->dateTime('date_time_value')->nullable();
+            $table->decimal('decimal_value')->nullable();
+            $table->float('float_value')->nullable();
+            $table->double('double_value')->nullable();
+            $table->json('json_value')->nullable();
 
             // These are fake value types that we will need to work some magic to make them configurable.
-            $table->json('enum_value');
-            $table->integer('increment_value');
+            $table->json('enum_value')->nullable();
+            $table->integer('increment_value')->nullable();
 
             $table->timestamps();
         });

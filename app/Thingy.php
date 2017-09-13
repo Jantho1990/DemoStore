@@ -9,6 +9,7 @@ class Thingy extends Model
     protected $fillable = [
         'name',
         'type',
+        'entity_id',
         'integer_value',
         'unsigned_integer_value',
         'string_value',
