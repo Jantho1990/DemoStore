@@ -49,4 +49,9 @@ class TestController extends Controller
         return $entity->$attr;
     }
 
+    public function testHome()
+    {
+        return view('test.home');
+    }
+
 }
