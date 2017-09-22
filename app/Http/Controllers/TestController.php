@@ -20,6 +20,7 @@ class TestController extends Controller
         $entity->save();
 //        dd($entity);
         $id = $entity->id;
+//        dd($id);
 
         $attributes = [
             ['name' => 'a_string', 'type' => 'string', 'value' => 'This is a string'],
@@ -35,6 +36,17 @@ class TestController extends Controller
             );
         }
         dd($entity->thingies);
+    }
+
+    public function testGetEntity(Entity $entity)
+    {
+        dd($entity->thingies);
+        return response()->json($entity);
+    }
+
+    public function testGetEntityAttribute(Entity $entity, $attr)
+    {
+        return $entity->$attr;
     }
 
 }

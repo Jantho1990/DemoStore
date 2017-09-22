@@ -12,6 +12,8 @@
 */
 
 Route::get('/test', 'TestController@testEntityAttributeRelationship');
+Route::get('/entity/{entity}', 'TestController@testGetEntity');
+Route::get('/entity/{entity}/{attr}', 'TestController@testGetEntityAttribute');
 
 Route::get('/', function () {
     return view('welcome');
