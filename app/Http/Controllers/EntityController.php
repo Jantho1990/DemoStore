@@ -36,7 +36,12 @@ class EntityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Entity::create([
+            'entityName' => $request->entityName
+        ])){
+            return redirect()->route('entity.index')->withMessage('Entity template created!');
+        }
+        return redirect()->back()->withError('Entity template could not be created.');
     }
 
     /**

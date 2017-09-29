@@ -12,9 +12,11 @@
 */
 
 Route::get('/test', 'TestController@testEntityAttributeRelationship');
-Route::get('/entity/{entity}', 'TestController@testGetEntity');
-Route::get('/entity/{entity}/{attr}', 'TestController@testGetEntityAttribute');
-Route::geT('/testhome', 'TestController@testHome');
+Route::get('/test/entity/{entity}', 'TestController@testGetEntity');
+Route::get('/test/entity/{entity}/{attr}', 'TestController@testGetEntityAttribute');
+Route::get('/testhome', 'TestController@testHome');
+
+Route::resource('entity', 'EntityController');
 
 Route::get('/', function () {
     return view('welcome');
